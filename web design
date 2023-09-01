@@ -1,0 +1,97 @@
+import './App.css';
+function App() {
+  const data = [
+    {
+      header: "FREE",
+      sub_header: "$0/month",
+      right_symbol: "✔",
+      wrong_symbol: "❌",
+      details:
+      {
+        "Single User": true,
+        "5GB Storeage": true,
+        "Unlimited Public Project": true,
+        "Community Access": true,
+        "Unlimited Private Project": false,
+        "Dedicated Phone Support": false,
+        "Free Subdomain": false,
+        "Monthly Status Report": false,
+
+      }
+    },
+    {
+      header: "PLUS",
+      sub_header: "$9/month",
+      right_symbol: "✔",
+      wrong_symbol: "❌",
+      details:
+      {
+        "Single User": true,
+        "5GB Storeage": true,
+        "Unlimited Public Project": true,
+        "Community Access": true,
+        "Unlimited Private Project": true,
+        "Dedicated Phone Support": true,
+        "Free Subdomain": true,
+        "Monthly Status Report": false,
+
+
+      }
+    },
+    {
+      header: "PRO",
+      sub_header: "$49/month",
+      right_symbol: "✔",
+      wrong_symbol: "❌",
+      details:
+      {
+        "Single User": true,
+        "5GB Storeage": true,
+        "Unlimited Public Project": true,
+        "Community Access": true,
+        "Unlimited Private Project": true,
+        "Dedicated Phone Support": true,
+        "Free Subdomain": true,
+        "Monthly Status Report": true,
+
+      }
+    },
+  ];
+  return (
+    <div className="My App">
+      {data.map((item, idx) => (
+        <PriceCard
+          key={idx}
+          title={item.header}
+          sub_title={item.sub_header}
+          right={item.right_symbol}
+          wrong={item.wrong_symbol}
+          details={item.details} />
+      ))}
+    </div>
+  );
+}
+export default App;
+function PriceCard(props) {
+  return (
+    <div className="container">
+      <div className="cards">
+        <p className="header">{props.title}</p>
+        <b> <p className="sub-header">{props.sub_title}</p> </b>
+        <hr></hr>
+        <ul className="properties">
+          {Object.keys(props.details).map((item, idx) => (
+            
+            <p span style={{ color: props.details[item] ? "black" : "grey", textalign: "left" }}>{props.details[item] ? props.right : props.wrong}{item} </p>
+
+
+
+          ))}
+        </ul>
+        <div> <button style={{margin:"20px"}} className="footer-btn" type="button"   >
+          <b >BUTTON</b>
+        </button></div>
+      </div>
+    </div>
+  );
+}
